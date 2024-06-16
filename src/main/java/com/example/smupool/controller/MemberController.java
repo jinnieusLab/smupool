@@ -23,8 +23,13 @@ public class MemberController {
     }
 
     @GetMapping("/{memberId}")
-    public BaseResponse<MemberResponseDTO.MemberPreviewDTO> readUser(@PathVariable Long memberId) {
+    public BaseResponse<MemberResponseDTO.MemberPreviewDTO> readMember(@PathVariable Long memberId) {
         Member member = memberService.readMember(memberId);
         return BaseResponse.onSuccess(MemberConverter.toMemberPreviewDTO(member));
+    }
+
+    @DeleteMapping("/{memberId}")
+    public void deleteMember(@PathVariable Long memberId) {
+        memberService.deleteMember(memberId);
     }
 }

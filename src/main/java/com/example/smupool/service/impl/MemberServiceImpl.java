@@ -29,4 +29,11 @@ public class MemberServiceImpl implements MemberService {
             throw new MemberHandler(ErrorStatus._NOT_FOUND_MEMBER);
         });
     }
+
+    @Override
+    @Transactional
+    public void deleteMember(Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(()-> new MemberHandler(ErrorStatus._NOT_FOUND_MEMBER));
+        memberRepository.delete(member);
+    }
 }
