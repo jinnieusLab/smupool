@@ -22,9 +22,9 @@ public class MemberController {
         return BaseResponse.onSuccess(MemberConverter.toJoinResultDTO(member));
     }
 
-    @GetMapping("/members/{memberId}")
+    @GetMapping("/{memberId}")
     public BaseResponse<MemberResponseDTO.MemberPreviewDTO> readUser(@PathVariable Long memberId) {
         Member member = memberService.readMember(memberId);
-        return null;
+        return BaseResponse.onSuccess(MemberConverter.toMemberPreviewDTO(member));
     }
 }

@@ -20,5 +20,12 @@ public class MemberConverter {
                 .build();
     }
 
-    public static MemberResponseDTO.MemberPreviewDTO
+    public static MemberResponseDTO.MemberPreviewDTO toMemberPreviewDTO(Member member) {
+        return MemberResponseDTO.MemberPreviewDTO.builder()
+                .memberId(member.getId())
+                .studentId(member.getStudentId())
+                .createdAt(member.getCreatedAt())
+                .updatedAt(member.getUpdatedAt())
+                .build();
+    }
 }
