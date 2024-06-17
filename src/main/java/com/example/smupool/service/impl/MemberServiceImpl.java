@@ -13,10 +13,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     @Override
-    @Transactional
     public Member join(MemberRequestDTO.JoinDTO joinDTO) {
         Member member = MemberConverter.toMember(joinDTO);
         return memberRepository.save(member);
@@ -31,7 +31,6 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    @Transactional
     public void deleteMember(Long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(()-> new MemberHandler(ErrorStatus._NOT_FOUND_MEMBER));
         memberRepository.delete(member);
