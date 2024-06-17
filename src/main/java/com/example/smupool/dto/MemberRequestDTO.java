@@ -12,4 +12,12 @@ public class MemberRequestDTO {
 //        private String nickname;
 //        private String major;
     }
+
+    @Getter
+    public static class UpdateMemberDTO {
+//        private String password;
+        private String name;
+        private String nickname;
+        private String major;
+    }
 }

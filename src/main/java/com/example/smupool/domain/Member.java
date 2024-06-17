@@ -27,6 +27,12 @@ public class Member extends BaseEntity {
     @Column(length = 20)
     private String major;
 
+    public void update(String name, String nickname, String major) {
+        this.name = name;
+        this.nickname = nickname;
+        this.major = major;
+    }
+
 //    // FK
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "matching_id")

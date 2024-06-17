@@ -9,4 +9,7 @@ public interface MemberService {
     Member readMember(Long memberId);
 
     void deleteMember(Long memberId);
+
+    Member updateMember(MemberRequestDTO.UpdateMemberDTO updateMemberDTO, Long memberId);
+
 }

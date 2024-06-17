@@ -35,4 +35,11 @@ public class MemberServiceImpl implements MemberService {
         Member member = memberRepository.findById(memberId).orElseThrow(()-> new MemberHandler(ErrorStatus._NOT_FOUND_MEMBER));
         memberRepository.delete(member);
     }
+
+    @Override
+    public Member updateMember(MemberRequestDTO.UpdateMemberDTO updateMemberDTO, Long memberId) {
+        Member member = memberRepository.findById(memberId).orElseThrow(() -> new MemberHandler(ErrorStatus._NOT_FOUND_MEMBER));
+        member.update(updateMemberDTO.getName(), updateMemberDTO.getNickname(), updateMemberDTO.getMajor());
+        return member;
+    }
 }

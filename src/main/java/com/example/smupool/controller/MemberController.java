@@ -28,9 +28,18 @@ public class MemberController {
         return BaseResponse.onSuccess(MemberConverter.toMemberPreviewDTO(member));
     }
 
+    @PatchMapping("/{memberId}")
+    public BaseResponse<MemberResponseDTO.MemberPreviewDTO> updateMember(@RequestBody MemberRequestDTO.UpdateMemberDTO updateMemberDTO, @PathVariable Long memberId){
+        Member member = memberService.updateMember(updateMemberDTO, memberId);
+        return BaseResponse.onSuccess(MemberConverter.toMemberPreviewDTO(member));
+    }
+
+
     @DeleteMapping("/{memberId}")
     public BaseResponse<String> deleteMember(@PathVariable Long memberId) {
         memberService.deleteMember(memberId);
         return BaseResponse.onSuccess("멤버가 삭제되었습니다.");
     }
+
+
 }
