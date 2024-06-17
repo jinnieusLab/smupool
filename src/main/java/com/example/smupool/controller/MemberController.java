@@ -29,7 +29,8 @@ public class MemberController {
     }
 
     @DeleteMapping("/{memberId}")
-    public void deleteMember(@PathVariable Long memberId) {
+    public BaseResponse<String> deleteMember(@PathVariable Long memberId) {
         memberService.deleteMember(memberId);
+        return BaseResponse.onSuccess("멤버가 삭제되었습니다.");
     }
 }
